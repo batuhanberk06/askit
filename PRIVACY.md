@@ -63,6 +63,10 @@ AskIt does not request access to all websites.
 
 The extension ships its runtime code locally and does not load remote executable code. Users should still avoid sending information they do not want the selected AI provider to process.
 
+## Limited use
+
+AskIt's use and transfer of user data complies with the Chrome Web Store User Data Policy, including its Limited Use requirements. AskIt uses data only to provide its disclosed purpose: preparing user-requested content for the AI website the user selects. It does not use or transfer that data for advertising, analytics, creditworthiness, or unrelated purposes.
+
 ## Changes to this policy
 
 Material changes will be published in this repository and on the hosted policy page with an updated effective date.
