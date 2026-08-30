@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="AskIt Privacy Policy" />
+    <meta name="theme-color" content="#0b0d12" />
+    <title>Privacy Policy — AskIt</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="shell nav" aria-label="Main navigation">
+        <a class="brand" href="./">
+          <span class="brand-mark" aria-hidden="true">A</span>
+          <span>AskIt</span>
+        </a>
+        <div class="nav-links">
+          <a href="./">Home</a>
+          <a href="privacy.html" aria-current="page">Privacy</a>
+          <a href="support.html">Support</a>
+          <a href="https://github.com/batuhanberk06/askit">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="content">
+      <p class="eyebrow">Effective August 30, 2026</p>
+      <h1>Privacy Policy</h1>
+      <p class="notice">
+        AskIt has no developer-operated backend or analytics. When you continue from its wizard, your prepared content is transferred into the AI website you selected.
+      </p>
+
+      <h2>Data AskIt processes</h2>
+      <p>AskIt processes content only after you start an action:</p>
+      <ul>
+        <li>text selected on a web page;</li>
+        <li>the URL of the current page;</li>
+        <li>a JPEG screenshot of the visible part of the current tab;</li>
+        <li>the AI provider, task, target language, and custom question selected in the popup; and</li>
+        <li>your default AI provider and last target language.</li>
+      </ul>
+      <p>For the URL action, AskIt sends only the URL with a prepared instruction. It does not read or upload the page HTML.</p>
+
+      <h2>How data is used</h2>
+      <p>
+        Pending content is used to build the request shown in the chosen AI provider's composer. AskIt does not automatically submit the conversation. You review the prepared content and click Send on the AI website.
+      </p>
+      <p>
+        When you continue from the AskIt wizard, the prepared text and optional screenshot are transferred into the selected AI website. Image attachment may cause that website to begin uploading the screenshot before you click Send.
+      </p>
+
+      <h2>Storage and retention</h2>
+      <ul>
+        <li>Pending text, URLs, screenshots, and their creation time are stored in <code>chrome.storage.session</code>.</li>
+        <li>Successfully prepared pending content is removed unless AskIt needs to retain a screenshot for manual copy or drag-and-drop.</li>
+        <li>Pending content older than 10 minutes is removed the next time AskIt initializes the popup.</li>
+        <li>Session storage is cleared when the browser session ends.</li>
+        <li>The default AI provider and last target language remain in <code>chrome.storage.local</code> until you clear extension data or uninstall AskIt.</li>
+      </ul>
+      <p>AskIt does not use cookies for its own purposes.</p>
+
+      <h2>Data received by the developer</h2>
+      <p>
+        AskIt has no developer-operated backend, database, analytics, telemetry, advertising, or API-key service. The developer does not receive the text, URLs, screenshots, prompts, or settings processed by the extension.
+      </p>
+
+      <h2>Third-party AI services</h2>
+      <p>The service you select processes prepared content under its own terms and privacy policy:</p>
+      <ul>
+        <li><a href="https://openai.com/policies/privacy-policy/">OpenAI Privacy Policy</a></li>
+        <li><a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
+        <li><a href="https://www.anthropic.com/legal/privacy">Anthropic Privacy Policy</a></li>
+        <li><a href="https://www.perplexity.ai/hub/legal/privacy-policy">Perplexity Privacy Policy</a></li>
+      </ul>
+      <p>AskIt is an independent project and is not affiliated with or endorsed by these providers.</p>
+
+      <h2>Browser permissions</h2>
+      <ul>
+        <li><strong>activeTab:</strong> reads the active page URL after your action and captures the visible tab.</li>
+        <li><strong>contextMenus:</strong> adds the selected-text action.</li>
+        <li><strong>storage:</strong> holds pending content and local preferences.</li>
+        <li><strong>scripting:</strong> fills the selected AI site's composer.</li>
+        <li><strong>Host access:</strong> is limited to the supported ChatGPT, Gemini, Claude, and Perplexity domains.</li>
+      </ul>
+      <p>AskIt does not request access to all websites.</p>
+
+      <h2>Security</h2>
+      <p>
+        AskIt ships its runtime code locally and does not load remote executable code. Avoid sending information you do not want the selected AI provider to process.
+      </p>
+
+      <h2>Changes</h2>
+      <p>Material changes will be published here and in the repository with an updated effective date.</p>
+
+      <h2>Contact</h2>
+      <p>
+        For privacy questions, open an issue in the <a href="https://github.com/batuhanberk06/askit/issues">AskIt GitHub repository</a>. Issues are public; do not include confidential or personal content.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-row">
+        <span>AskIt is an independent project.</span>
+        <div class="footer-links">
+          <a href="./">Home</a>
+          <a href="support.html">Support</a>
+          <a href="https://github.com/batuhanberk06/askit">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <title>AskIt</title>
+    <link rel="stylesheet" href="../shared/ui.css" />
+  </head>
+  <body class="notranslate" translate="no">
+    <div class="app">
+      <header class="app-header">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <img src="../../icons/icon-48.png" alt="" />
+          </div>
+          <div>
+            <div class="brand-name">AskIt</div>
+            <div class="brand-tag" id="header-tag">See something. Ask anything.</div>
+          </div>
+        </div>
+        <button class="icon-btn" id="close-popup" type="button" aria-label="Close">
+          <svg class="icon" viewBox="0 0 256 256" aria-hidden="true">
+            <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/>
+          </svg>
+        </button>
+      </header>
+
+      <p class="alert error" id="status"></p>
+
+      <section id="view-home">
+        <div class="stack">
+          <button class="launch" id="ask-page" type="button">
+            <span class="launch-icon" aria-hidden="true">
+              <svg class="icon icon-lg" viewBox="0 0 256 256">
+                <path d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm88,104a87.61,87.61,0,0,1-3.33,24H174.16a157.44,157.44,0,0,0,0-48h38.51A87.61,87.61,0,0,1,216,128ZM102,168H154a115.11,115.11,0,0,1-26,45A115.27,115.27,0,0,1,102,168Zm-3.9-16a140.84,140.84,0,0,1,0-48h59.88a140.84,140.84,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.84a157.44,157.44,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154,88H102a115.11,115.11,0,0,1,26-45A115.27,115.27,0,0,1,154,88Zm52.33,0H170.71a135.28,135.28,0,0,0-22.3-45.6A88.29,88.29,0,0,1,206.37,88ZM107.59,42.4A135.28,135.28,0,0,0,85.29,88H49.63A88.29,88.29,0,0,1,107.59,42.4ZM49.63,168H85.29a135.28,135.28,0,0,0,22.3,45.6A88.29,88.29,0,0,1,49.63,168Zm98.78,45.6a135.28,135.28,0,0,0,22.3-45.6h35.66A88.29,88.29,0,0,1,148.41,213.6Z"/>
+              </svg>
+            </span>
+            <span class="launch-label">Ask about this page</span>
+            <svg class="icon chevron" viewBox="0 0 256 256" aria-hidden="true">
+              <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/>
+            </svg>
+          </button>
+          <button class="launch" id="capture" type="button">
+            <span class="launch-icon" aria-hidden="true">
+              <svg class="icon icon-lg" viewBox="0 0 256 256">
+                <path d="M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.71,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H80a8,8,0,0,0,6.66-3.56L100.28,48h55.43l13.63,20.44A8,8,0,0,0,176,72h32a8,8,0,0,1,8,8ZM128,88a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,88Zm0,72a28,28,0,1,1,28-28A28,28,0,0,1,128,160Z"/>
+              </svg>
+            </span>
+            <span class="launch-label">Capture screenshot</span>
+            <svg class="icon chevron" viewBox="0 0 256 256" aria-hidden="true">
+              <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="stack section-gap">
+          <button class="nav-row" id="open-settings" type="button">
+            <svg class="icon" viewBox="0 0 256 256" aria-hidden="true">
+              <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.21,107.21,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.71,107.71,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.21,107.21,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8,8,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L82.89,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.43,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.2,100.45a91.57,91.57,0,0,1,6.23-15L69,82.89a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,82.89,69L85.4,46.43a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8,8,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173.11,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.87,123.66Z"/>
+            </svg>
+            <span>Settings</span>
+            <svg class="icon chevron" viewBox="0 0 256 256" aria-hidden="true">
+              <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section id="view-settings" hidden>
+        <div class="settings-row">
+          <button class="nav-row settings-nav" id="toggle-default-ai" type="button" aria-expanded="false">
+            <svg class="icon" viewBox="0 0 256 256" aria-hidden="true">
+              <path d="M200,48H136V16a8,8,0,0,0-16,0V48H56A32,32,0,0,0,24,80V192a32,32,0,0,0,32,32H200a32,32,0,0,0,32-32V80A32,32,0,0,0,200,48Zm16,144a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V80A16,16,0,0,1,56,64H200a16,16,0,0,1,16,16Zm-52-56H92a28,28,0,0,0,0,56h72a28,28,0,0,0,0-56Zm-24,16v24H116V152ZM80,164a12,12,0,0,1,12-12h8v24H92A12,12,0,0,1,80,164Zm84,12h-8V152h8a12,12,0,0,1,0,24ZM72,108a12,12,0,1,1,12,12A12,12,0,0,1,72,108Zm88,0a12,12,0,1,1,12,12A12,12,0,0,1,160,108Z"/>
+            </svg>
+            <span>Default AI</span>
+            <span class="value" id="settings-ai-value">ChatGPT</span>
+            <svg class="icon chevron" viewBox="0 0 256 256" aria-hidden="true">
+              <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/>
+            </svg>
+          </button>
+          <div class="settings-panel" id="panel-default-ai" hidden>
+            <div id="default-ai" class="stack"></div>
+          </div>
+        </div>
+
+        <div class="settings-row">
+          <button class="nav-row settings-nav" id="toggle-default-lang" type="button" aria-expanded="false">
+            <svg class="icon" viewBox="0 0 256 256" aria-hidden="true">
+              <path d="M247.15,212.42l-56-112a8,8,0,0,0-14.31,0l-21.71,43.43A88,88,0,0,1,108,126.93,103.65,103.65,0,0,0,135.69,64H160a8,8,0,0,0,0-16H104V32a8,8,0,0,0-16,0V48H32a8,8,0,0,0,0,16h87.63A87.76,87.76,0,0,1,96,116.35a87.74,87.74,0,0,1-19-31,8,8,0,1,0-15.08,5.34A103.63,103.63,0,0,0,84,127a87.55,87.55,0,0,1-52,17,8,8,0,0,0,0,16,103.46,103.46,0,0,0,64-22.08,104.18,104.18,0,0,0,51.44,21.31l-26.6,53.19a8,8,0,0,0,14.31,7.16L148.94,192h70.11l13.79,27.58A8,8,0,0,0,240,224a8,8,0,0,0,7.15-11.58ZM156.94,176,184,121.89,211.05,176Z"/>
+            </svg>
+            <span>Default Translation language</span>
+            <span class="value" id="settings-lang-value">English</span>
+            <svg class="icon chevron" viewBox="0 0 256 256" aria-hidden="true">
+              <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/>
+            </svg>
+          </button>
+          <div class="settings-panel" id="panel-default-lang" hidden>
+            <div id="default-lang" class="chips"></div>
+          </div>
+        </div>
+
+        <p class="caption">Screenshot shortcut: <span class="kbd">Alt</span> <span class="kbd">Shift</span> <span class="kbd">S</span></p>
+        <div class="action-bar">
+          <button class="btn btn-secondary" id="back-settings" type="button">Back</button>
+        </div>
+      </section>
+
+      <section id="view-send" hidden>
+        <div class="stepper" id="stepper"></div>
+        <div class="meta" id="chip-row"></div>
+        <p class="alert error" id="error"></p>
+
+        <div id="step-ai">
+          <h2 class="page-title">Choose an AI</h2>
+          <div id="ai-list" class="stack"></div>
+          <div class="action-bar">
+            <button class="btn btn-secondary" id="back-ai" type="button">Back</button>
+            <button class="btn btn-primary" id="continue-ai" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="step-action" hidden>
+          <h2 class="page-title">Choose a task</h2>
+          <div id="action-list" class="stack"></div>
+          <div id="extra"></div>
+          <div class="action-bar">
+            <button class="btn btn-secondary" id="back-action" type="button">Back</button>
+            <button class="btn btn-primary" id="continue-action" type="button">Continue</button>
+          </div>
+        </div>
+
+        <div id="step-status" hidden>
+          <div class="prepare" id="prepare">
+            <div class="spinner" aria-hidden="true"></div>
+            <div class="status-icon" aria-hidden="true">
+              <svg class="icon icon-xl si-ok" viewBox="0 0 256 256">
+                <path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/>
+              </svg>
+              <svg class="icon icon-xl si-error" viewBox="0 0 256 256">
+                <path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/>
+              </svg>
+              <svg class="icon icon-xl si-manual" viewBox="0 0 256 256">
+                <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"/>
+              </svg>
+            </div>
+            <p class="status-msg" id="status-text">Opening…</p>
+            <img class="preview" id="fallback-img" alt="" hidden draggable="true" />
+          </div>
+          <div class="action-bar">
+            <button class="btn btn-secondary" id="copy-image" type="button" hidden>Copy image</button>
+            <button class="btn btn-secondary" id="back-status" type="button">Back</button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script type="module" src="./popup.js"></script>
+  </body>
+</html>

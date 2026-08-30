@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AskIt — Reklam stüdyosu</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <strong>AskIt</strong>
+          <span>Reklam stüdyosu</span>
+        </div>
+      </div>
+      <nav class="tabs" id="tabs"></nav>
+      <div class="top-actions">
+        <label class="size-field">
+          Boyut
+          <select id="size">
+            <option value="1400x560">1400 × 560 — mağaza şeridi</option>
+            <option value="1280x800">1280 × 800 — ekran görüntüsü</option>
+            <option value="920x680">920 × 680 — büyük kutu</option>
+            <option value="1920x1080">1920 × 1080 — geniş</option>
+            <option value="1080x1080">1080 × 1080 — kare</option>
+          </select>
+        </label>
+        <button type="button" class="btn ghost" id="reset">Sıfırla</button>
+        <button type="button" class="btn primary" id="download">PNG indir</button>
+      </div>
+    </header>
+
+    <div class="studio">
+      <aside class="panel">
+        <p class="hint">Tuvalde tıkla ve sürükle. Kenarlar yaklaşınca hizalanır (Shift: serbest). Köşe tutamacından büyüt/küçült. Ok tuşları kaydırır, Delete gizler.</p>
+
+        <div class="inspector" id="inspector">
+          <p class="extra-title">Seçili katman · <b id="layer-name">yok</b></p>
+          <label class="check">
+            <input id="layer-visible" type="checkbox" />
+            Görünür
+          </label>
+          <label>
+            Ölçek <span id="layer-scale-val">100%</span>
+            <input id="layer-scale" type="range" min="40" max="280" value="100" />
+          </label>
+          <label>
+            Opaklık <span id="layer-opacity-val">100%</span>
+            <input id="layer-opacity" type="range" min="20" max="100" value="100" />
+          </label>
+          <div class="btn-row">
+            <button type="button" class="btn ghost" id="layer-back">Alta</button>
+            <button type="button" class="btn ghost" id="layer-front">Öne</button>
+            <button type="button" class="btn ghost" id="layer-hide">Gizle</button>
+          </div>
+          <label id="insp-text-wrap" class="hidden">
+            Metin
+            <textarea id="layer-text" rows="2"></textarea>
+          </label>
+          <div id="insp-cursor-wrap" class="hidden">
+            <p class="extra-title">İmleç rengi</p>
+            <div class="btn-row" style="grid-template-columns: 1fr 1fr">
+              <button type="button" class="btn ghost" id="cursor-black">Siyah</button>
+              <button type="button" class="btn ghost" id="cursor-white">Beyaz</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="extra-title">Katmanlar</p>
+        <div id="layer-list" class="layer-list"></div>
+        <div class="btn-row" style="grid-template-columns: 1fr 1fr">
+          <button type="button" class="btn ghost" id="add-chip">+ Etiket</button>
+          <button type="button" class="btn ghost" id="add-text">+ Yazı</button>
+          <button type="button" class="btn ghost" id="add-cursor">+ İmleç</button>
+          <button type="button" class="btn ghost" id="add-image">+ Görsel</button>
+        </div>
+        <input id="layer-image" type="file" accept="image/*" hidden />
+        <div id="chip-fields" class="extra"></div>
+
+        <label id="badge-field">
+          Rozet
+          <input id="badge" type="text" />
+        </label>
+        <label>
+          Başlık
+          <textarea id="headline" rows="3"></textarea>
+          <small>Vurgu için *yıldız* kullan: Ask *anything.*</small>
+        </label>
+        <label id="title2-field" class="hidden">
+          AskIt satırı
+          <textarea id="title2" rows="2"></textarea>
+        </label>
+        <label>
+          Açıklama
+          <textarea id="body" rows="4"></textarea>
+        </label>
+
+        <div class="row">
+          <label>
+            Zemin 1
+            <input id="bg1" type="color" />
+          </label>
+          <label>
+            Zemin 2
+            <input id="bg2" type="color" />
+          </label>
+          <label>
+            Vurgu
+            <input id="accent" type="color" />
+          </label>
+        </div>
+
+        <div id="fields-hero" class="extra">
+          <p class="extra-title">Özellik etiketleri</p>
+          <input data-pill="0" type="text" />
+          <input data-pill="1" type="text" />
+          <input data-pill="2" type="text" />
+          <input data-pill="3" type="text" />
+        </div>
+
+        <div id="fields-capture" class="extra hidden">
+          <p class="extra-title">Ekran görüntüsü</p>
+          <label>
+            Üst etiket
+            <input id="float-badge" type="text" />
+          </label>
+          <label>
+            PiP etiketi
+            <input id="pip-badge" type="text" />
+          </label>
+        </div>
+
+        <div id="fields-privacy" class="extra hidden">
+          <p class="extra-title">Sayı kartları</p>
+          <div class="triple">
+            <input data-stat-n="0" type="text" />
+            <input data-stat-n="1" type="text" />
+            <input data-stat-n="2" type="text" />
+          </div>
+          <div class="triple">
+            <input data-stat-l="0" type="text" />
+            <input data-stat-l="1" type="text" />
+            <input data-stat-l="2" type="text" />
+          </div>
+        </div>
+
+        <div id="fields-ais" class="extra hidden">
+          <p class="extra-title">Özellik kartları</p>
+          <div class="triple">
+            <input data-card-n="0" type="text" />
+            <input data-card-n="1" type="text" />
+            <input data-card-n="2" type="text" />
+          </div>
+          <div class="triple">
+            <input data-card-l="0" type="text" />
+            <input data-card-l="1" type="text" />
+            <input data-card-l="2" type="text" />
+          </div>
+        </div>
+
+        <div id="fields-select" class="extra hidden">
+          <p class="extra-title">Sayfa ve seçim</p>
+          <label>
+            Sayfa başlığı
+            <input id="page-title" type="text" />
+          </label>
+          <label>
+            Sayfa metni
+            <textarea id="page-body" rows="5"></textarea>
+            <small>Sayfada metni seç, sağ tık menüyü yerleştirir.</small>
+          </label>
+          <label>
+            Seçili metin
+            <input id="selected-text" type="text" />
+          </label>
+          <label class="file-btn">
+            Tarayıcı penceresine görsel (sayfa içi)
+            <input id="page-image" type="file" accept="image/*" />
+          </label>
+          <button type="button" class="btn ghost" id="clear-image">Sayfa görselini kaldır</button>
+          <small>Serbest katman için soldaki + Görsel’i kullan.</small>
+        </div>
+      </aside>
+
+      <main class="preview-wrap" id="preview-wrap">
+        <div id="preview-frame">
+          <div id="stage" data-theme="hero">
+            <div class="guide-x" id="guide-x"></div>
+            <div class="guide-y" id="guide-y"></div>
+
+            <div class="layer" data-layer="badge"><div class="badge" id="out-badge"></div></div>
+            <div class="layer" data-layer="headline"><h1 id="out-headline"></h1></div>
+            <div class="layer" data-layer="title2"><h1 id="out-title2" class="free-text"></h1></div>
+            <div class="layer" data-layer="body"><p class="lede" id="out-body"></p></div>
+
+            <div class="layer" data-layer="pill-0"><span class="pill-item"></span></div>
+            <div class="layer" data-layer="pill-1"><span class="pill-item"></span></div>
+            <div class="layer" data-layer="pill-2"><span class="pill-item"></span></div>
+            <div class="layer" data-layer="pill-3"><span class="pill-item"></span></div>
+
+            <div class="layer" data-layer="chip-0"><span class="chip-item"></span></div>
+            <div class="layer" data-layer="chip-1"><span class="chip-item"></span></div>
+
+            <div class="layer" data-layer="stat-0"><article class="stat-item"><b></b><small></small></article></div>
+            <div class="layer" data-layer="stat-1"><article class="stat-item"><b></b><small></small></article></div>
+            <div class="layer" data-layer="stat-2"><article class="stat-item"><b></b><small></small></article></div>
+
+            <div class="layer" data-layer="card-0"><article class="feat-item"><b></b><small></small></article></div>
+            <div class="layer" data-layer="card-1"><article class="feat-item"><b></b><small></small></article></div>
+            <div class="layer" data-layer="card-2"><article class="feat-item"><b></b><small></small></article></div>
+
+            <div class="layer" data-layer="mock">
+              <div class="mock mock-popup">
+                <header class="pop-head">
+                  <div class="pop-brand">
+                    <span class="askit-mark"></span>
+                    <div>
+                      <b>AskIt</b>
+                      <small>See something. Ask anything.</small>
+                    </div>
+                  </div>
+                  <span class="pop-x">✕</span>
+                </header>
+                <button class="pop-launch" type="button">
+                  <span class="pop-ico">🌐</span>
+                  <span>Ask about this page</span>
+                  <span class="chev">›</span>
+                </button>
+                <button class="pop-launch" type="button">
+                  <span class="pop-ico">📷</span>
+                  <span>Capture screenshot</span>
+                  <span class="chev">›</span>
+                </button>
+                <button class="pop-nav" type="button">
+                  <span>⚙</span>
+                  <span>Settings</span>
+                  <span class="chev">›</span>
+                </button>
+                <p class="pop-foot">0 servers · 0 accounts · you send it</p>
+              </div>
+
+              <div class="mock mock-capture">
+                <div class="win">
+                  <div class="win-dots traffic"><i class="tl-r"></i><i class="tl-y"></i><i class="tl-g"></i></div>
+                  <div class="win-lines">
+                    <span></span><span></span><span></span><span></span>
+                  </div>
+                  <div class="pip">
+                    <div class="pip-face"></div>
+                  </div>
+                </div>
+                <div class="float-paused" id="out-float">
+                  <span>❚❚</span>
+                  <b id="out-float-text">CAPTURED</b>
+                </div>
+                <div class="float-pip" id="out-pip">WEBCAM · PiP</div>
+              </div>
+
+              <div class="mock mock-library">
+                <header class="lib-head">
+                  <span class="lib-play">▶</span>
+                  <b>Send to</b>
+                  <div class="lib-tabs">
+                    <em>All</em>
+                    <span>Text</span>
+                    <span>Shot</span>
+                  </div>
+                </header>
+                <div class="lib-grid">
+                  <article>
+                    <div class="thumb"><i></i></div>
+                    <span class="tag saved">READY</span>
+                    <h4>ChatGPT</h4>
+                    <p>Summarize · text</p>
+                  </article>
+                  <article>
+                    <div class="thumb"><i></i></div>
+                    <span class="tag saved">READY</span>
+                    <h4>Gemini</h4>
+                    <p>Explain · page</p>
+                  </article>
+                  <article>
+                    <div class="thumb"><i></i></div>
+                    <span class="tag unsaved">SHOT</span>
+                    <h4>Claude</h4>
+                    <p>Translate · 12 KB</p>
+                  </article>
+                  <article>
+                    <div class="thumb"><i></i></div>
+                    <span class="tag saved">READY</span>
+                    <h4>Perplexity</h4>
+                    <p>Fact-check · URL</p>
+                  </article>
+                </div>
+                <footer class="lib-foot">
+                  <span>session only</span>
+                  <div class="bar"><i></i></div>
+                  <span>local only</span>
+                </footer>
+              </div>
+
+              <div class="mock mock-quality">
+                <header>
+                  <span class="hex">⬡</span>
+                  <b>Choose an AI</b>
+                </header>
+                <div class="q-row">
+                  <label>AI</label>
+                  <div class="q-opts">
+                    <span class="on">ChatGPT</span>
+                    <span>Gemini</span>
+                    <span>Claude</span>
+                    <span>Perplexity</span>
+                  </div>
+                </div>
+                <div class="q-row">
+                  <label>Task</label>
+                  <div class="q-opts">
+                    <span class="on">Summarize</span>
+                    <span>Translate</span>
+                    <span>Explain</span>
+                  </div>
+                </div>
+                <div class="q-row">
+                  <label>Source</label>
+                  <div class="q-opts">
+                    <span>Text</span>
+                    <span class="on">Screenshot</span>
+                    <span>Page URL</span>
+                  </div>
+                </div>
+                <div class="q-out">
+                  <div class="fmt on">Continue <em>FAST</em></div>
+                  <div class="fmt">You send it</div>
+                </div>
+              </div>
+
+              <div class="mock mock-select" id="mock-select">
+                <div class="browser">
+                  <div class="chrome-bar">
+                    <span class="chrome-dots traffic"><i class="tl-r"></i><i class="tl-y"></i><i class="tl-g"></i></span>
+                    <div class="omnibox" id="out-url">example.com/article</div>
+                  </div>
+                  <div class="page" id="page">
+                    <img class="page-shot" id="page-shot" alt="" />
+                    <div class="sel-box" id="sel-box"></div>
+                    <article class="page-article" id="page-article"></article>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="layer" data-layer="menu">
+              <div class="ctx-menu" id="ctx-menu">
+                <div class="ctx-item">Copy <kbd>Ctrl+C</kbd></div>
+                <div class="ctx-item" id="ctx-google">Search Google for “…”</div>
+                <div class="ctx-sep"></div>
+                <div class="ctx-item on">
+                  <span class="askit-mark sm"></span>
+                  <span id="ctx-askit">AskIt: “…”</span>
+                </div>
+                <div class="ctx-item">Inspect</div>
+              </div>
+            </div>
+            <div id="dyn-layers"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="html2canvas.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
